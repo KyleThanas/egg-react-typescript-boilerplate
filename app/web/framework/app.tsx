@@ -7,13 +7,13 @@ import { matchRoutes } from 'react-router-config';
 async function asyncData(locals, router) {
   const url = locals.url;
   const matchRouteList = matchRoutes(router, url);
-  const promises = matchRouteList.map(matchRoute=> {
+  const promises = matchRouteList.map(matchRoute => {
     const componentAsyncData = matchRoute.route.component.asyncData;
     return componentAsyncData instanceof Function ? componentAsyncData(locals, matchRoute) : null;
   });
   const list = await Promise.all(promises);
-  return list.reduce((item: Object, result : Object) => {
-    return { ...result, ...item}
+  return list.reduce((item: Object, result: Object) => {
+    return { ...result, ...item }
   }, {});
 }
 

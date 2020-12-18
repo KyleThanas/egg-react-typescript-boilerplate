@@ -16,6 +16,9 @@ module.exports = {
   output: { path: pathDir, publicPath: publicPath },
   resolve: {
     alias:{
+      '@types': resolve('app/web/types'),
+      '@utils': resolve('app/web/utils'),
+      '@settings': resolve('app/web/settings'),
       '@asset': resolve('app/web/asset'),
       '@framework': resolve('app/web/framework'),
       '@component': resolve('app/web/component')
