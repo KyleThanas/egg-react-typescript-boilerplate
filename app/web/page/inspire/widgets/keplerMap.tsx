@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { hot } from 'react-hot-loader/root'
 import { connect } from 'react-redux';
 import KeplerGl from 'kepler.gl';
 import { addDataToMap, wrapTo } from 'kepler.gl/actions';
@@ -13,9 +14,10 @@ import configGalaxy from '../data/galaxy-config';
 const MAPBOX_TOKEN = 'pk.eyJ1IjoieGlhb25pdSIsImEiOiJjamsxNm9oczMwNzk4M3dsYmNsdjIxYm4xIn0.xaNqu5WkkTDwuBR2zk2M9Q'; // eslint-disable-line
 
 const KeplerMapContainer: React.FC<IKeplerProps> = props => {
-  const { dispatch } = props;
   console.log('props: ', props);
-  console.log('dispatch: ', dispatch);
+  // const { dispatch } = props;
+  // console.log('props: ', props);
+  // console.log('dispatch: ', dispatch);
   const galaxyData = require('../data/galaxy-data.json')
 
   // demo数据
@@ -40,19 +42,19 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
     jsonToData.data.fields = useData.datasets[0].data.fields;
     jsonToData.data.rows = useData.datasets[0].data.allData;
 
-    dispatch(
-      wrapTo(
-        'KeplerGlMap',
-        addDataToMap({
-          datasets: jsonToData,
-          config: showConfig,
-          option: {
-            centerMap: true,
-            readOnly: false,
-          },
-        }),
-      ),
-    );
+    // dispatch(
+    //   wrapTo(
+    //     'KeplerGlMap',
+    //     addDataToMap({
+    //       datasets: jsonToData,
+    //       config: showConfig,
+    //       option: {
+    //         centerMap: true,
+    //         readOnly: false,
+    //       },
+    //     }),
+    //   ),
+    // );
   }, []);
 
   return (
@@ -67,4 +69,5 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
 const mapStateToProps = state => state;
 const dispatchToProps = dispatch => ({ dispatch });
 
-export default connect(mapStateToProps, dispatchToProps)(KeplerMapContainer);
+// export default connect(mapStateToProps, dispatchToProps)(EASY_ENV_IS_DEV ? hot(KeplerMapContainer) : KeplerMapContainer);
+export default EASY_ENV_IS_DEV ? hot(KeplerMapContainer) : KeplerMapContainer

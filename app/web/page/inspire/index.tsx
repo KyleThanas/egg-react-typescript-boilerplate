@@ -11,23 +11,22 @@ const CompanyPage: React.FC = () => {
   const [pageTitle, setPageTitle] = useState<string>('');
   const [statisticsData] = useState<any>();
 
+  console.log('useEffect: ', useEffect);
+  console.log('store: ', store);
   useEffect(() => {
-    console.log('store: ', store);
     const companyId = 'a123';
     setPageTitle(companyId);
   }, []);
 
   return (
-    <DocumentTitle title={pageTitle}>
-      <Provider store={store}>
-        <>
-          <h1>Welcome <a href="/">easy-react-admin</a>!</h1>
-          <h1>Welcome <a href="/">easy-react-admin</a>!</h1>
-          <DemoPage />
-          {/* <KeplerMapContainer statisticsData={statisticsData} /> */}
-        </>
-      </Provider>
-    </DocumentTitle>
+    <Provider store={store}>
+      <>
+        <h1>Welcome <a href="/">easy-react-admin</a>!</h1>
+        <h1>Welcome <a href="/">easy-react-admin</a>!</h1>
+        <DemoPage />
+        {/* <KeplerMapContainer statisticsData={statisticsData} /> */}
+      </>
+    </Provider>
   );
 };
 

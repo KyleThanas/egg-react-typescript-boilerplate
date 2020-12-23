@@ -16,6 +16,7 @@ class Main extends Component {
 
   constructor(props) {
     super(props);
+    console.log('props1111: ', props);
     this.state = { current: props.url };
   }
 
@@ -34,10 +35,10 @@ class Main extends Component {
       </ul>
       <Switch>
         <Route type={ARTICLE_DETAIL} path="/detail/:id" component={Detail} />
-        <Route path="/example" component={Example}/>
-        <Route path="/async" component={Async}/>
-        <Route path="/about" component={About}/>
-        <Route type={ARTICLE_LIST} path="/" component={Home}/>
+        <Route path="/example" component={Example} />
+        <Route path="/async" component={Async} />
+        <Route path="/about" component={About} />
+        <Route type={ARTICLE_LIST} path="/" component={Home} />
       </Switch>
     </Layout>;
   }

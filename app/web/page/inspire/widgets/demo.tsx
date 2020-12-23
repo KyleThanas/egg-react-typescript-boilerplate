@@ -4,6 +4,7 @@ import { IKeplerProps, IKeplerJson } from 'types/common';
 
 const demoPage: React.FC<IKeplerProps> = props => {
   console.log('props: ', props);
+  console.log('window: ', window);
   return (
     <div>
       <div>
